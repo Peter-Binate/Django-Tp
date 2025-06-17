@@ -1,0 +1,18 @@
+version: "3.9"
+
+services:
+  django-web:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    ports:
+      - "8000:8000"
+    volumes:
+      - ./app:/app
+    working_dir: /app
+    command: >
+      bash -c "
+      pip install -r requirements.txt && 
+      python manage.py migrate --no-input && 
+      python install.py && 
+      python manage.py runserver 0.0.0.0:8000"

@@ -8,7 +8,7 @@ services:
     volumes:
       - ./app:/app
     environment:
-      - DEBUG=False
+      - DEBUG=True
       - DJANGO_SETTINGS_MODULE=djangoapi.settings
     command: >
       bash -c "

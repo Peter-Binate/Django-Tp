@@ -1,0 +1,17 @@
+services:
+  django-web:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    ports:
+      - "8000:8000"
+    volumes:
+      - ./app:/app
+    environment:
+      - DEBUG=False
+      - DJANGO_SETTINGS_MODULE=djangoapi.settings
+    command: >
+      bash -c "
+        python manage.py migrate --no-input &&
+        python manage.py runserver 0.0.0.0:8000
+      "
